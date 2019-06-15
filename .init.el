@@ -1,6 +1,6 @@
 ;; init.el --- Emacs configuration
 
-;; INSTALL PACKAGES
+;; Install PACKAGES
 ;; --------------------------------------
 
 (require 'package)
@@ -19,6 +19,7 @@
     ein
     elpy
     flycheck
+    skype
     neotree
     material-theme
     py-autopep8))
@@ -36,6 +37,12 @@
 (global-linum-mode t) ;; enable line numbers globally
 (setq mac-command-modifier 'control)
 (tool-bar-mode -1)
+(neotree-show)
+;; Display Visited File's Path in the Frame Title
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
@@ -53,4 +60,8 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+;; SKYPE CONFIGURATION
+;; --------------------------------------
+(require 'skype)
+(setq skype--my-user-handle "flyermc")
 ;; init.el ends here
